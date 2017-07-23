@@ -36,5 +36,3 @@ export default class Cards extends Component {
     );
   }
 }
-// <h2>Billin code challenge</h2>
-// <pre>{JSON.stringify(this.props.articles, null, 2)}</pre>
