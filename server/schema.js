@@ -1,9 +1,12 @@
+const ObjectId = require('mongodb').ObjectID;
+
 import {
   GraphQLBoolean,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
   GraphQLSchema,
+  GraphQLInt
 } from 'graphql';
 import db from './db';
 
@@ -41,12 +44,20 @@ const Query = new GraphQLObjectType({
   fields: () => ({
     articles: {
       type: new GraphQLList(articleType),
-      resolve() {
-        return db.Article.find();
+      resolve: () => {
+          return db.Article.find()
+      }
+    },
+    getArticle: {
+      type: new GraphQLList(articleType),
+      args: {
+        id: {type: GraphQLString}
       },
-      // resolve(obj, args, context){
-      //   return db.Article.find({id:args.id})
-      // }
+      resolve: (obj, args, context) => {
+        return db.Article.find(
+          {_id:new ObjectId(args.id)}
+        )
+      },
     },
   }),
 });
@@ -56,9 +67,3 @@ const Schema = new GraphQLSchema({
 });
 
 export default Schema;
-
-
-// id: new GraphQLList(articleType),
-// resolve(id){
-//   return db.Article.find({_id:id});
-// }
