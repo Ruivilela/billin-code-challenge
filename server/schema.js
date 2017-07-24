@@ -44,6 +44,9 @@ const Query = new GraphQLObjectType({
       resolve() {
         return db.Article.find();
       },
+      // resolve(obj, args, context){
+      //   return db.Article.find({id:args.id})
+      // }
     },
   }),
 });
@@ -53,3 +56,9 @@ const Schema = new GraphQLSchema({
 });
 
 export default Schema;
+
+
+// id: new GraphQLList(articleType),
+// resolve(id){
+//   return db.Article.find({_id:id});
+// }
