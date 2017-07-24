@@ -1,16 +1,14 @@
 import React from 'react';
 // import components here
-import Cards from './components/cards/index';
+import Main from './router-components/main/index';
 import Header from './components/header/index';
 import Footer from './components/footer/index';
 
 const App = () => {
   return(
     <div style={style.container}>
-      <div style={style.main}>
-        <Header />
-        <Cards />
-      </div>
+      <Header />
+      <Main style={style.main}/>
       <Footer />
     </div>
   )

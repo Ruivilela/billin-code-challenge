@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from './../../request';
 import { ARTICLES_QUERY } from './../../queries';
 import style from './style';
+import { Link } from 'react-router-dom';
 
 export default class Cards extends Component {
   // lifecycle
@@ -26,6 +27,9 @@ export default class Cards extends Component {
           <div>
            {articles.excerpt}
           </div>
+          <Link to={`/card/${articles.id}`}>
+            See more
+          </Link>
         </div>
       )
     })
