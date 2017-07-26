@@ -15,28 +15,42 @@ export default class Cards extends Component {
   }
   // Renders
   render() {
-    let articles = this.props.articles.map((articles) => {
-      return(
-        <div style={style.box} key={articles.id}>
-          <h2 style={style.author}>
-            {articles.author}
-          </h2>
-          <h6 style={style.title}>
-            Title: {articles.title}
-          </h6>
-          <div>
-           {articles.excerpt}
+    let articles;
+
+    if(this.props.articles){
+      articles = this.props.articles.map((articles) => {
+        return(
+          <div style={style.box} key={articles.id}>
+            <h2 style={style.author}>
+              {articles.author}
+            </h2>
+            <h6 style={style.title}>
+              Title: {articles.title}
+            </h6>
+            <div>
+             {articles.excerpt}
+            </div>
+            <Link to={`/card/${articles.id}`}>
+              See more
+            </Link>
           </div>
-          <Link to={`/card/${articles.id}`}>
-            See more
-          </Link>
+        )
+      })
+    }
+    // component return
+    if(articles){
+      return (
+        <div className="App" style={style.component}>
+          {articles}
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          Loading...
         </div>
       )
-    })
-    return (
-      <div className="App" style={style.component}>
-        {articles}
-      </div>
-    );
+    }
+
   }
 }

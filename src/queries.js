@@ -11,8 +11,9 @@ export const ARTICLE_QUERY_BY_ID = () => {
   return `query($id: String){
     getArticle(id: $id){
       author
-      id
-      excerpt
+      content
+      published
+      tags
       title
     }
   }`
