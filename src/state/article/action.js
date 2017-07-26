@@ -4,3 +4,10 @@ export const initialArticles = (payload) => {
     payload: payload
   }
 }
+
+export const getArticle = (payload) => {
+  return {
+    type:'GET_ARTICLE',
+    payload: payload
+  }
+}

@@ -1,5 +1,6 @@
 const State = {
-  articles:[]
+  articles:[],
+  selected_article:{}
 }
 
 export default State
