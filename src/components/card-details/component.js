@@ -1,19 +1,12 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { requestWithVariables } from './../../request';
-import { ARTICLE_QUERY_BY_ID } from './../../queries';
 import style from './style';
 
 
 export default class CardDetails extends Component {
 
   componentWillMount() {
-    requestWithVariables(ARTICLE_QUERY_BY_ID(), {id:this.props.match.params.id})
-      .then(response => {
-        this.props.actions.getArticle({
-          selected_article: response.data.getArticle[0]
-        })
-    });
+    this.props.actions.getArticle(this.props.match.params.id);
   }
 
   render(){

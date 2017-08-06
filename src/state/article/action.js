@@ -19,3 +19,10 @@ export const getArticle = (payload) => {
     payload: payload
   }
 }
+
+export const getArticleAsync = (payload) => {
+  return {
+    type:'GET_ARTICLE_ASYNC',
+    payload: payload
+  }
+}

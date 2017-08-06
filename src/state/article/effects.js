@@ -1,11 +1,12 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
-import request from './../../request';
-import { ARTICLES_QUERY } from './../../queries';
-import { initialArticles } from './action';
+import request , { requestWithVariables } from './../../request';
+import { ARTICLES_QUERY , ARTICLE_QUERY_BY_ID } from './../../queries';
+import { initialArticles , getArticle } from './action';
 
 export default function* articleEffects(){
   yield all([
-    watchGetAllArticles()
+    watchGetAllArticles(),
+    watchGetSingleArticle()
   ])
 }
 
@@ -17,4 +18,14 @@ function* getAllArticles (){
 
 function* watchGetAllArticles() {
   yield takeEvery('INITIAL_ARTICLES_ASYNC', getAllArticles)
+}
+
+function* getSingleArticle(data) {
+  const response = yield requestWithVariables(ARTICLE_QUERY_BY_ID(), {id:data.payload})
+  const article = yield response.data.getArticle[0]
+  yield put(getArticle({selected_article: article }))
+}
+
+function* watchGetSingleArticle() {
+  yield takeEvery('GET_ARTICLE_ASYNC', getSingleArticle)
 }

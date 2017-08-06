@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getArticle } from './../../state/article/action';
+import { getArticleAsync } from './../../state/article/action';
 import CardDetails from './component.js'
 
 function mapStateToProps(state) {
@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
-        getArticle: getArticle
+        getArticle: getArticleAsync
       },
       dispatch
     )
