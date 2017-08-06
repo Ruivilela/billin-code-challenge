@@ -114,11 +114,9 @@ const Mutation = new GraphQLObjectType({
         id: { type: GraphQLString },
         author: {
           type: GraphQLString,
+          required: true
         },
         content: {
-          type: GraphQLString,
-        },
-        excerpt: {
           type: GraphQLString,
         },
         published: {

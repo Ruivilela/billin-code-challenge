@@ -5,6 +5,14 @@ export const initialArticles = (payload) => {
   }
 }
 
+export const initialArticlesAsync = (payload) => {
+  return {
+    type:'INITIAL_ARTICLES_ASYNC',
+    payload: payload
+  }
+}
+
+
 export const getArticle = (payload) => {
   return {
     type:'GET_ARTICLE',

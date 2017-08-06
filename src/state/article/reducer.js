@@ -6,6 +6,7 @@ const articleReducer =
     switch(action.type){
       case 'INITIAL_ARTICLES':
         newState = Object.assign({}, action.payload);
+        console.log(newState)
         return newState;
         break;
       case 'GET_ARTICLE':

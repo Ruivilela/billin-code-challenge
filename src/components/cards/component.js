@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import request from './../../request';
-import { ARTICLES_QUERY } from './../../queries';
 import style from './style';
 import { Link } from 'react-router-dom';
 
 export default class Cards extends Component {
   // lifecycle
   componentWillMount() {
-    request(ARTICLES_QUERY).then(response => {
-      this.props.actions.getInitialArticles(
-        { articles: response.data.articles }
-      );
-    });
+    this.props.actions.getInitialArticles()
   }
   // Renders
   render() {
